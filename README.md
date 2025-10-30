@@ -64,6 +64,10 @@ SELECT nome FROM usuarios WHERE idade IS NULL;
 
 **Matheus Soares Borges**
 
+**Karla Léa Nascimento Querrer**
+
+**Arthur Vaz Pereira Calisto**
+
 ---
 
 🧾 Projeto acadêmico — Centro Universitário do Planalto Central Apparecido dos Santos (UNICEPLAC)
