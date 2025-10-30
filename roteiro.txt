@@ -1,0 +1,107 @@
+"""\
+🎓 SEMINÁRIO DE BANCO DE DADOS — GRUPO 05
+Tema: SELECT, WHERE e Flags (Filtros Práticos)
+Banco de Dados: PostgreSQL via Terminal (psql)
+
+──────────────────────────────
+1️⃣ Abertura (30s–1min)
+──────────────────────────────
+"Olá! Nós somos o Grupo 5 e o tema do nosso seminário é SELECT, WHERE e Flags (filtros práticos).
+Vamos usar o PostgreSQL via terminal para demonstrar como realizar consultas filtradas em um banco de dados.
+Esse tema é essencial no dia a dia de qualquer desenvolvedor, pois o SELECT é o comando mais usado para buscar informações específicas em uma base de dados."
+
+──────────────────────────────
+2️⃣ Parte Teórica (1–2 min)
+──────────────────────────────
+• SELECT: comando usado para consultar dados de uma ou mais tabelas.
+• WHERE: usado para filtrar resultados de acordo com condições.
+
+Operadores mais comuns:
+=   → igual
+> , <  → maior/menor
+BETWEEN → intervalo
+IN  → dentro de uma lista
+LIKE → busca por padrão (com %)
+IS NULL → verifica valores nulos
+
+Flags (booleanos) em PostgreSQL:
+→ BOOLEAN aceita TRUE, FALSE ou NULL
+
+──────────────────────────────
+3️⃣ Demonstração Prática (3–6 min)
+──────────────────────────────
+Entrar no PostgreSQL:
+psql -U postgres
+
+Criar banco e tabela:
+CREATE DATABASE seminario_grupo5;
+\\c seminario_grupo5;
+
+CREATE TABLE usuarios (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(80) NOT NULL,
+    idade INT,
+    ativo BOOLEAN DEFAULT TRUE
+);
+
+Inserir dados:
+INSERT INTO usuarios (nome, idade, ativo) VALUES
+('Ana', 25, TRUE),
+('Bruno', 32, FALSE),
+('Carla', 19, TRUE),
+('Diego', NULL, TRUE),
+('Eva', 28, FALSE);
+
+Consultas:
+SELECT * FROM usuarios;
+SELECT nome, idade FROM usuarios WHERE ativo = TRUE;
+SELECT nome, idade FROM usuarios WHERE idade > 25;
+SELECT nome, idade FROM usuarios WHERE idade BETWEEN 20 AND 30;
+SELECT nome FROM usuarios WHERE nome LIKE 'A%';
+SELECT nome FROM usuarios WHERE idade IS NULL;
+
+──────────────────────────────
+4️⃣ Exemplo com Erro (1 min)
+──────────────────────────────
+❌ Incorreto:
+SELECT nome FROM usuarios WHERE ativo = 'TRUE';
+
+✅ Correto:
+SELECT nome FROM usuarios WHERE ativo = TRUE;
+
+Explicação:
+Em PostgreSQL, valores booleanos são TRUE ou FALSE, e não strings.
+
+──────────────────────────────
+5️⃣ Dica Profissional (30s)
+──────────────────────────────
+"Evite usar aspas em valores booleanos ou numéricos.
+Use IS NULL ou IS NOT NULL para checar campos vazios.
+E revise sempre as condições do WHERE antes de rodar comandos de exclusão."
+
+──────────────────────────────
+6️⃣ Questão Final
+──────────────────────────────
+Pergunta:
+Qual comando retornará todos os usuários inativos cujo nome começa com “B” ou “E”?
+
+a) SELECT * FROM usuarios WHERE ativo = FALSE AND nome LIKE 'A%' OR nome LIKE 'H%';
+b) SELECT * FROM usuarios WHERE ativo = FALSE AND (nome LIKE 'A%' OR nome LIKE 'H%');
+c) SELECT * FROM usuarios WHERE ativo = FALSE OR nome LIKE 'A%' OR nome LIKE 'H%';
+
+✅ Resposta correta: b)
+Os parênteses garantem que o filtro de nome se aplique somente aos inativos.
+
+──────────────────────────────
+7️⃣ Créditos e Referências
+──────────────────────────────
+• Documentação oficial PostgreSQL — https://www.postgresql.org/docs/current/sql-select.html
+• Materiais da disciplina de Banco de Dados Tamo Junto ROMES!!!
+• Testes feitos no PostgreSQL 16 via terminal (psql)
+
+──────────────────────────────
+🎬 Encerramento
+──────────────────────────────
+"Agradecemos por assistir! Este foi o seminário do Grupo 05 sobre SELECT, WHERE e flags no PostgreSQL.
+Esperamos que tenha ficado claro como realizar consultas filtradas e evitar erros comuns."
+"""
