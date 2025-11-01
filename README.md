@@ -25,7 +25,7 @@ Foram explorados operadores lógicos, filtragem condicional e o uso de campos bo
 ## 💻 Tecnologias Utilizadas
 - **PostgreSQL 16**
 - **Terminal `psql`**
-- **Sistema operacional:** Linux
+- **Sistema operacional:** Arch Linux
 
 ---
 
